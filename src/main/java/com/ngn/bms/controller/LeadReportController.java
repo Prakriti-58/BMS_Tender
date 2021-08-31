@@ -14,7 +14,7 @@ import com.ngn.bms.service.LeadReportServices;
 
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200", "http://192.168.124.242","http://103.80.111.102"})
+@CrossOrigin(origins = {"http://localhost:4200", "http://192.168.124.242","http://103.80.111.102","http://192.168.124.90"})
 @RequestMapping("report")
 public class LeadReportController {
 	

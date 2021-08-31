@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ngn.bms.model.DailySales;
+import com.ngn.bms.model.DailySalesRequest;
 import com.ngn.bms.model.DailySalesSequence;
 import com.ngn.bms.repository.DailySaleRepository;
 import com.ngn.bms.repository.DailySalesSequenceRepository;
@@ -56,6 +57,39 @@ public class DailySaleService {
 	public DailySalesSequence getLatestCashMemoNoByCashId(String createdBy, int cashId) {
 		return sequenceRepo.findByCashId(createdBy, cashId);		
 	}
-
 	
+	public DailySales updatePaymentDetails(DailySalesRequest request) {
+		String format = "";
+		DailySales newSales = new DailySales();
+		DailySalesSequence sequence = new DailySalesSequence();
+		
+		if(request.getCreatedBy() == 12) {
+			sequence = sequenceRepo.findByCashId(Integer.toString(request.getCreatedBy()), 0);
+			format = "CM(S)/2021/0";
+		} else {
+			sequence = sequenceRepo.findByCashId(Integer.toString(request.getCreatedBy()), request.getCashMemoType());
+			
+			if(request.getCashMemoType() == 1) {
+				format = "CM(T)/2021/0";
+			} else {
+				format = "CM(X)/2021/0";
+			}
+		}
+			
+		newSales.setCashAmount(request.getCashAmount());
+		newSales.setCashMemoNo(format+(sequence.getSalesSequence()+1));
+		newSales.setCreatedBy(request.getCreatedBy());
+		newSales.setFile_path(request.getFilePath());
+		newSales.setSaleType("cash");
+		newSales.setRemarks("Payment Scanner App");
+		
+		newSales = repo.save(newSales);
+		
+		sequence = sequenceRepo.findById(sequence.getId()).get();
+		sequence.setSalesSequence(sequence.getSalesSequence()+1);
+		sequenceRepo.save(sequence);
+		
+		return newSales;
+	}
+
 }

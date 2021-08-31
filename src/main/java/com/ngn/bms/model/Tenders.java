@@ -320,9 +320,5 @@ public class Tenders {
 	public void setUserList(UserList userList) {
 		this.userList = userList;
 	}
-	
-	
-
-	
 	 
 }
