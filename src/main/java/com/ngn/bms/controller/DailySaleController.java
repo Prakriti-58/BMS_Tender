@@ -41,6 +41,11 @@ public class DailySaleController {
 		return new ResponseEntity<List<DailySales>>(service.getDailySaleForToday(userId), HttpStatus.OK);
 	}
 	
+	@GetMapping("/{userId}/byUser/{status}")
+	public ResponseEntity<List<DailySales>> getDailySaleForTodaySigned(@PathVariable int userId,@PathVariable String status){
+		return new ResponseEntity<List<DailySales>>(service.getDailySaleForTodaySigned(userId,status), HttpStatus.OK);
+	}
+	
 	@GetMapping("/{id}/byRowId")
 	public ResponseEntity<DailySales> getDailySaleById(@PathVariable int id){
 		return new ResponseEntity<DailySales>(service.getDailySaleById(id), HttpStatus.OK);

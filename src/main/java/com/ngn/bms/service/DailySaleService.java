@@ -92,4 +92,8 @@ public class DailySaleService {
 		return newSales;
 	}
 
+	public List<DailySales> getDailySaleForTodaySigned(int userId,String status) {
+		return repo.getDailySaleForTodaySigned(userId,status);
+	}
+
 }

@@ -22,6 +22,7 @@ public class DailySales {
 	private String invoiceNo;
 	private double cashAmount;
 	private double invoiceAmount;
+	private String status;
 	private String remarks;
 	@CreationTimestamp
 	private LocalDate createdOn;
@@ -110,5 +111,11 @@ public class DailySales {
 	}
 	public void setFile_path(String file_path) {
 		this.file_path = file_path;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

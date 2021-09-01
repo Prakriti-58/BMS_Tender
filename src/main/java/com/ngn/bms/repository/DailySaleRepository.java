@@ -10,6 +10,9 @@ import com.ngn.bms.model.DailySalesSequence;
 
 public interface DailySaleRepository extends JpaRepository<DailySales, Integer> {
 
+	@Query(value = "SELECT * FROM daily_sales a WHERE a.`created_on`=CURRENT_DATE AND a.created_by=?1 AND a.status=?2", nativeQuery = true)
+	List<DailySales> getDailySaleForTodaySigned(int userId,String signed);
+	
 	@Query(value = "SELECT * FROM daily_sales a WHERE a.`created_on`=CURRENT_DATE AND a.created_by=?1", nativeQuery = true)
 	List<DailySales> getDailySaleForToday(int userId);
 	
