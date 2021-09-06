@@ -30,7 +30,7 @@ import com.ngn.bms.service.DailySaleService;
 
 @RestController
 @RequestMapping("/daily-sale")
-@CrossOrigin(origins = {"http://localhost:4200", "http://192.168.124.242","http://103.80.111.102","http://192.168.124.90"})
+@CrossOrigin(origins = {"http://localhost:4200", "http://192.168.124.242", "http://localhost","http://103.80.111.102","http://192.168.124.90"})
 public class DailySaleController {
 
 	@Autowired
@@ -44,6 +44,11 @@ public class DailySaleController {
 	@GetMapping("/{userId}/byUser/{status}")
 	public ResponseEntity<List<DailySales>> getDailySaleForTodaySigned(@PathVariable int userId,@PathVariable String status){
 		return new ResponseEntity<List<DailySales>>(service.getDailySaleForTodaySigned(userId,status), HttpStatus.OK);
+	}
+	
+	@GetMapping("/{userId}/{status}")
+	public ResponseEntity<List<DailySales>> getDailySaleUnsigned(@PathVariable int userId,@PathVariable String status){
+		return new ResponseEntity<List<DailySales>>(service.getDailySaleUnsigned(userId,status), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}/byRowId")

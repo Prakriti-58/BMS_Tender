@@ -95,5 +95,10 @@ public class DailySaleService {
 	public List<DailySales> getDailySaleForTodaySigned(int userId,String status) {
 		return repo.getDailySaleForTodaySigned(userId,status);
 	}
+	
+	public List<DailySales> getDailySaleUnsigned(int userId,String status) {
+		return repo.getDailySaleUnsigned(userId,status);
+	}
+
 
 }
