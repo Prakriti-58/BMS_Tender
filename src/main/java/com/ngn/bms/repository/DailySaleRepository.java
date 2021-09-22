@@ -9,6 +9,7 @@ import com.ngn.bms.model.DailySales;
 import com.ngn.bms.model.DailySalesSequence;
 
 public interface DailySaleRepository extends JpaRepository<DailySales, Integer> {
+	
 
 	@Query(value = "SELECT * FROM daily_sales a WHERE a.`created_on`=CURRENT_DATE AND a.created_by=?1 AND a.status=?2", nativeQuery = true)
 	List<DailySales> getDailySaleForTodaySigned(int userId,String signed);
@@ -22,6 +23,6 @@ public interface DailySaleRepository extends JpaRepository<DailySales, Integer> 
 	@Query(value = "SELECT * FROM daily_sales a WHERE a.`cash_memo_no` <> '' ORDER BY a.`id` DESC LIMIT 1", nativeQuery = true)
 	DailySales getLatestCashMemoNoByUser(String createdBy);
 
-	@Query(value = "SELECT * FROM daily_sales a WHERE a.created_on BETWEEN ?1 AND ?2 AND a.created_by = ?3", nativeQuery = true)
+	@Query(value = "SELECT * FROM daily_sales a WHERE a.created_on BETWEEN ?1 AND ?2 AND a.created_by = ?3 AND a.weekly_status = 'S'", nativeQuery = true)
 	List<DailySales> findByDate(String fromDate, String toDate, int createdBy);
 }

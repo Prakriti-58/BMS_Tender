@@ -33,6 +33,7 @@ public class DailySales {
 	private int updatedBy;
 	private String file_name;
 	private String file_path;
+	private String weeklyStatus;
 	
 	public int getId() {
 		return id;
@@ -117,5 +118,11 @@ public class DailySales {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getWeeklyStatus() {
+		return weeklyStatus;
+	}
+	public void setWeeklyStatus(String weeklyStatus) {
+		this.weeklyStatus = weeklyStatus;
 	}
 }
