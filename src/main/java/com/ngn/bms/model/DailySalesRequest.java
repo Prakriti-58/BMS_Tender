@@ -6,6 +6,8 @@ public class DailySalesRequest {
 	private String filePath;
 	private double cashAmount;
 	private int cashMemoType;
+	private String status;
+	private String weeklyStatus;
 	
 	public int getCashMemoType() {
 		return cashMemoType;
@@ -31,4 +33,17 @@ public class DailySalesRequest {
 	public void setCashAmount(double cashAmount) {
 		this.cashAmount = cashAmount;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getWeeklyStatus() {
+		return weeklyStatus;
+	}
+	public void setWeeklyStatus(String weeklyStatus) {
+		this.weeklyStatus = weeklyStatus;
+	}
+	
 }

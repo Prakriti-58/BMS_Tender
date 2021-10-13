@@ -26,8 +26,7 @@ public class DailySales {
 	private String remarks;
 	@CreationTimestamp
 	private LocalDate createdOn;
-	private int createdBy;
-	@Column(insertable=false)
+	private int createdBy; 
 	@UpdateTimestamp
 	private LocalDate updatedOn;
 	private int updatedBy;

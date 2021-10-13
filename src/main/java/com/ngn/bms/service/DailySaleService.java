@@ -81,8 +81,9 @@ public class DailySaleService {
 		newSales.setCreatedBy(request.getCreatedBy());
 		newSales.setFile_path(request.getFilePath());
 		newSales.setSaleType("cash");
+		newSales.setStatus(request.getStatus());
+		newSales.setWeeklyStatus(request.getWeeklyStatus());
 		newSales.setRemarks("Payment Scanner App");
-		
 		newSales = repo.save(newSales);
 		
 		sequence = sequenceRepo.findById(sequence.getId()).get();
